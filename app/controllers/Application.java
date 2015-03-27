@@ -257,34 +257,37 @@ public class Application extends Controller {
         Logger.info("INDICE:"+ ind);
         Usuario u = App.getUsuarioPorEmail(session().get("email"));
         List<Task> l = App.getListaTaskPendentesDoUsuario(u);
-        int resto = (l.size())%5;
-        if (l.size() <= 5) {
-            return ok(dashboard.render(u, l));
-        } else if(resto==0 && ind!=App.getIndicesListTarefas(u)){
-            int ini = 5 * (ind - 1);
-            int k = ini + 5;
-            List<Task> ln = new ArrayList<>();
-            for (int i = ini; i < k; i++){
-                ln.add(l.get(i));
+        if(l!=null && u!=null) {
+            int resto = (l.size()) % 5;
+            if (l.size() <= 5) {
+                return ok(dashboard.render(u, l));
+            } else if (resto == 0 && ind != App.getIndicesListTarefas(u)) {
+                int ini = 5 * (ind - 1);
+                int k = ini + 5;
+                List<Task> ln = new ArrayList<>();
+                for (int i = ini; i < k; i++) {
+                    ln.add(l.get(i));
+                }
+                return ok(dashboard.render(u, ln));
+            } else if (resto != 0 && ind != App.getIndicesListTarefas(u)) {
+                int ini = 5 * (ind - 1);
+                int k = ini + 5;
+                List<Task> ln = new ArrayList<>();
+                for (int i = ini; i < k; i++) {
+                    ln.add(l.get(i));
+                }
+                return ok(dashboard.render(u, ln));
+            } else {
+                int ini = 5 * (ind - 1);
+                int k = ini + resto;
+                List<Task> ln = new ArrayList<>();
+                for (int i = ini; i < k; i++) {
+                    ln.add(l.get(i));
+                }
+                return ok(dashboard.render(u, ln));
             }
-            return ok(dashboard.render(u,ln));
-        }else if(resto!=0 && ind!=App.getIndicesListTarefas(u)){
-            int ini = 5 * (ind - 1);
-            int k = ini + 5;
-            List<Task> ln = new ArrayList<>();
-            for (int i = ini; i < k; i++){
-                ln.add(l.get(i));
-            }
-            return ok(dashboard.render(u,ln));
-        }else{
-            int ini = 5 * (ind - 1);
-            int k = ini + resto;
-            List<Task> ln = new ArrayList<>();
-            for (int i = ini; i < k; i++){
-                ln.add(l.get(i));
-            }
-            return ok(dashboard.render(u,ln));
         }
+        return ok();
     }
 
     @Transactional
@@ -322,13 +325,11 @@ public class Application extends Controller {
 
         Logger.info("CODE:" + code);
         Usuario ufb = loginFacebook.obterUsuarioFacebook(code);
+        Logger.info("EMAIL:"+ ufb.getEmail());
         Usuario us = App.getUsuarioPorEmail(ufb.getEmail());
         if(us==null){
-            if(App.addUsuarioNoBD(ufb.getEmail(),"12345", ufb.getNome(),ufb.getFoto(),0)){
-                session().clear();
-                session().put("email",ufb.getEmail());
-                return renderDashboardUsuario();
-            }
+            App.addUsuarioNoBD(ufb.getEmail(),"12345", ufb.getNome(),ufb.getFoto(),0);
+            us = App.getUsuarioPorEmail(ufb.getEmail());
         }
         if (us!=null) {
             session().clear();
