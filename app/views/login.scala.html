@@ -1,81 +1,179 @@
 @(title: String)
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Atarefado | Log in</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.2 -->
-    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="/assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="/assets/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    <head>
+        <meta charset="UTF-8">
+        <title>Atarefado | Log in</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+            <!-- Bootstrap 3.3.2 -->
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <!-- Font Awesome Icons -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+            <!-- Theme style -->
+        <link href="/assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+            <!-- iCheck -->
+        <link href="/assets/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/styl.css" rel="stylesheet" type="text/css"/>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body class="login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Atarefado</b></a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Faça Login para iniciar sua sessão</p>
-        <form action="/auth" method="post">
-          <div class="form-group has-feedback">
-            <input name="email" type="text" class="form-control" placeholder="Email"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input name="senha" type="password" class="form-control" placeholder="Password"/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
-          <div class="row">
-            <div class="col-xs-8">    
-              <div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> Lembrar
-                </label>
-              </div>                        
-            </div><!-- /.col -->
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
-            </div><!-- /.col -->
-          </div>
-        </form>
+    </head>
+    <body class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#"><b>Atarefado</b></a>
+            </div> <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Faça Login para iniciar sua sessão</p>
+                <form action="/auth" method="post">
+                    <div class="form-group has-feedback">
+                        <input name="email" type="text" class="form-control" placeholder="Email"/>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input name="senha" type="password" class="form-control" placeholder="Password"/>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox"> Lembrar
+                                </label>
+                            </div>
+                        </div> <!-- /.col -->
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+                        </div> <!-- /.col -->
+                    </div>
+                </form>
 
-        <div class="social-auth-links text-center">
-          <p>- OR -</p>
-          <a href="/loginfb" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Logar usando o Facebook</a>
-          <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Logar usando o Google+</a>
-        </div><!-- /.social-auth-links -->
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    <a href="/loginfb" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>
+                        Logar usando o Facebook</a>
+                    <span class="btn btn-block btn-social btn-google-plus btn-flat g-signin"
+                    data-callback="signinCallback"
+                    data-clientid="1033724888764-7hsp8cc6vi1ip3956oib4tbb1mjblqdk.apps.googleusercontent.com"
+                    data-cookiepolicy="single_host_origin"
+                    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+                    data-scope="https://www.googleapis.com/auth/plus.login"><i class="fa fa-google-plus"></i>
+                        Login usando o Google+</span>
+                </div> <!-- /.social-auth-links -->
 
-          <center><a href="/signin" class="text-center">Registrar como novo membro</a></center>
+                <center><a href="/signin" class="text-center">Registrar como novo membro</a></center>
 
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+            </div> <!-- /.login-box-body -->
+            <form id="form" action="/logingoo" method="post">
+                <input id="email" type="hidden" name="email" value="">
+                <input id="nome" type="hidden" name="nome" value="">
+                <input id="pic" type="hidden" name="pic" value="">
+                <button class="oculto" type="submit" id="butao"></button>
+            </form>
+        </div> <!-- /.login-box -->
 
-    <!-- jQuery 2.1.3 -->
-    <script src="/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="/assets/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
+        <!-- jQuery 2.1.3 -->
+        <script src="/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+            <!-- Bootstrap 3.3.2 JS -->
+        <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- iCheck -->
+        <script src="/assets/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <script>
+        $ ( function ( ) {
+        $ ( 'input' ).iCheck ( {
+        checkboxClass : 'icheckbox_square-blue',
+        radioClass : 'iradio_square-blue',
+        increaseArea : '20%' // optional
+        } ) ;
+        } ) ;
+        </script>
+
+        <script type="text/javascript">
+        ( function ( ) {
+        var po = document.createElement ( 'script' ) ; po.type = 'text/javascript' ; po.async = true ;
+        po.src = 'https://apis.google.com/js/client:plusone.js' ;
+        var s = document.getElementsByTagName ( 'script' )[ 0 ] ; s.parentNode.insertBefore ( po, s ) ;
+        } ) ( ) ;
+
+        function signinCallback ( authResult ) {
+        if ( authResult[ 'access_token' ] ) {
+        // Autorizado com sucesso
+        // Ocultar o botão de login agora que o usuário está autorizado, por exemplo:
+        //document.getElementById ( 'signinButton' ).setAttribute ( 'style', 'display: none' ) ;
+        gapi.auth.setToken ( authResult ) ; // Armazenar o token retornado.
+        getUsuario ( ) ;
+        } else if ( authResult[ 'error' ] ) {
+        // Ocorreu um erro.
+        // Possíveis códigos de erro:
+        //  "access_denied" - o usuário negou o acesso a seu aplicativo
+        //   "immediate_failed" - não foi possível fazer o login do usuário automaticamente
+        console.log ( 'There was an error: ' + authResult[ 'error' ] ) ;
+        }
+        }
+
+        /*
+  * Inicia a solicitação para o ponto final do userinfo para obter o endereço de
+  * e-mail do usuário Essa função depende do gapi.auth.setToken que contém um
+  * token de acesso OAuth válido.
+  *
+  * Quando a solicitação é concluída, o getEmailCallback é acionado e recebe
+  * o resultado da solicitação.
+  */
+        function getUsuario ( ) {
+        // Carregar bibliotecas oauth2 para ativar os métodos userinfo.
+        gapi.client.load ( 'oauth2', 'v2', function ( ) {
+        var request = gapi.client.oauth2.userinfo.get ( ) ;
+        request.execute ( getEmailCallback ) ;
+        } ) ;
+        }
+
+        function getEmailCallback ( obj ) {
+        //var el = document.getElementById('email');
+        var email = '' ;
+        var nameUser = '' ;
+        var picture = '' ;
+
+        if ( obj[ 'email' ] ) {
+        email = obj[ 'email' ] ;
+        } else {
+        email = obj[ 'id' ] ;
+        }
+
+        if ( obj[ 'name' ] ) {
+        nameUser = obj[ 'name' ] ;
+        }
+
+        if ( obj[ 'picture' ] ) {
+        picture = obj[ 'picture' ] ;
+        }
+        console.log ( "email:" + email ) ;
+        console.log ( "name:" + nameUser ) ;
+        console.log ( "picture:" + picture ) ;
+
+        var n = document.getElementById ( "nome" ) ;
+        var em = document.getElementById ( "email" ) ;
+        var fot = document.getElementById ( "pic" ) ;
+        n.value = nameUser ;
+        em.value = email ;
+        fot.value = picture ;
+
+        console.log ( "email:" + $('#email' ).val() ) ;
+        console.log ( "name:" + $('#nome' ).val() ) ;
+        console.log ( "picture:" + $('#pic' ).val() ) ;
+
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $( '#form' ).submit();
         });
-      });
-    </script>
-  </body>
+        //console.log(obj);
+        // Remover comentários para inspecionar o objeto inteiro.
+        }
+
+        </script>
+
+    </body>
 </html>

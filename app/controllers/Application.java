@@ -305,6 +305,33 @@ public class Application extends Controller {
         return renderAddTarefa();
     }
 
+
+    @Transactional
+    public static Result logarComGoogle() throws IOException{
+        DynamicForm r = Form.form().bindFromRequest();
+        String email, nome, pic;
+        email = r.get("email");
+        nome = r.get("nome");
+        pic = r.get("pic");
+        Logger.info("CODE:" + email);
+        String foto = pic;
+        String f = "https://cdn3.iconfinder.com/data/icons/users/100/user_male_1-512.png";
+        System.out.println("FotoGmail: "+foto);
+        Usuario us = App.getUsuarioPorEmail(email);
+        if(us==null){
+            App.addUsuarioNoBD(nome,email,"12345",pic,0);
+            us = App.getUsuarioPorEmail(email);
+        }
+        if (us!=null) {
+            session().clear();
+            session().put("email",email);
+            return renderDashboardUsuario();
+        } else {
+            return index();
+        }
+
+    }
+
     //@RequestMapping("/loginfb")
     public static Result logarComFacebook() {
         LoginFacebook loginFacebook = new LoginFacebook();

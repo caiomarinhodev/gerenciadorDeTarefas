@@ -20,6 +20,7 @@ GET         /admin/tasks/remove/:id        controllers.Application.removeTaskAdm
 
 GET         /loginfb                       controllers.Application.logarComFacebook()
 GET         /loginfbresponse               controllers.Application.logarComFace(code: String)
+POST        /logingoo                      controllers.Application.logarComGoogle
 
 POST        /auth                          controllers.Application.auth
 POST        /register                      controllers.Application.addUsuario
