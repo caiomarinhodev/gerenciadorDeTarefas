@@ -325,6 +325,9 @@ public class Application extends Controller {
         Usuario us = App.getUsuarioPorEmail(ufb.getEmail());
         if(us==null){
             App.addUsuarioNoBD(ufb.getEmail(),"12345", ufb.getNome(),ufb.getFoto(),0);
+            session().clear();
+            session().put("email",ufb.getEmail());
+            return renderDashboardUsuario();
         }
         if (us!=null) {
             session().clear();
