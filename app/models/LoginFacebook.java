@@ -52,7 +52,7 @@ public class LoginFacebook {
         Logger.info(foto);
         Logger.info(resp.asText());
         Usuario usuarioFacebook = new Usuario(nome,email,"12345",foto,0);
-        System.out.println(usuarioFacebook.toString());
+        System.out.println(usuarioFacebook.getFoto());
         return usuarioFacebook;
 
     }
