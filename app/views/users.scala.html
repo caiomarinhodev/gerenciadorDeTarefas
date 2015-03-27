@@ -1,4 +1,4 @@
-@(usuario: Usuario)
+@(usuario: Usuario, users: List[Usuario])
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,8 +95,8 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-tasks"></i> Tasks</a></li>
-                <li class="active treeview"><a href="#"><i class="fa fa-user"></i> Users</a></li>
+                <li><a href="/admin/tasks/1"><i class="fa fa-tasks"></i> Tasks</a></li>
+                <li class="active treeview"><a href="/admin/users/1"><i class="fa fa-user"></i> Users</a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -127,11 +127,9 @@
                             <h3 class="box-title">Todos Usuarios</h3>
                             <div class="box-tools">
                                 <ul class="pagination pagination-sm no-margin pull-right">
-                                    <li><a href="#">&laquo;</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">&raquo;</a></li>
+                                @for(i <- 1 to App.getIndicesTableUsersGeral){
+                                    <li><a href="/admin/users/@i">@i</a></li>
+                                }
                                 </ul>
                             </div>
                         </div>
@@ -148,58 +146,28 @@
                                     <th>Plano</th>
                                     <th style="width: 40px">?</th>
                                 </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Name</td>
-                                    <td>
-                                        name.at.name.com
-                                    </td>
-                                    <td>name123</td>
-                                    <td>url.com.br/pic.jpg</td>
-                                    <td>100</td>
-                                    <td>0</td>
-                                    <td><a href="#"> <span class="badge bg-red"><i class="fa fa-trash"> </i> </span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Name</td>
-                                    <td>
-                                        name.at.name.com
-                                    </td>
-                                    <td>name123</td>
-                                    <td>url.com.br/pic.jpg</td>
-                                    <td>100</td>
-                                    <td>0</td>
-                                    <td><a href="#"> <span class="badge bg-red"><i class="fa fa-trash"> </i> </span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Name</td>
-                                    <td>
-                                        name.at.name.com
-                                    </td>
-                                    <td>name123</td>
-                                    <td>url.com.br/pic.jpg</td>
-                                    <td>100</td>
-                                    <td>0</td>
-                                    <td><a href="#"> <span class="badge bg-red"><i class="fa fa-trash"> </i> </span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Name</td>
-                                    <td>
-                                        name.at.name.com
-                                    </td>
-                                    <td>name123</td>
-                                    <td>url.com.br/pic.jpg</td>
-                                    <td>100</td>
-                                    <td>0</td>
-                                    <td><a href="#"> <span class="badge bg-red"><i class="fa fa-trash"> </i> </span></a>
-                                    </td>
-                                </tr>
+                                @for(us <- users){
+                                    <tr>
+                                        <td>@us.getId</td>
+                                        <td>@us.getNome</td>
+                                        <td>
+                                        @us.getEmail
+                                        </td>
+                                        <td>@us.getSenha</td>
+                                        <td>@us.getFoto</td>
+                                        <td>@App.getListaDeTaskDeUsuario(us).size()</td>
+                                        <td>
+                                            @if(us.getPlan==0){
+                                                Basico
+                                            }else{
+                                                Premium
+                                            }
+                                        </td>
+                                        <td><a href="/admin/users/remove/@us.getId"> <span class="badge bg-red"><i class="fa fa-trash"> </i> </span></a>
+                                        </td>
+                                    </tr>
+                                }
+
                             </table>
                         </div>
                         <!-- /.box-body -->

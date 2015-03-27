@@ -24,6 +24,73 @@ public class App {
     }
 
     @Transactional
+    public static int getIndicesTable(Usuario u){
+        List<Task> l = getListaDeTaskDeUsuario(u);
+        int total = l.size();
+        int resto = total%30;
+        float conta = ((float)l.size())/(float)30;
+        if(conta>1 && resto==0){
+            return ( l.size()/30);
+        }else if(conta>1 && resto!=0){
+            return ( l.size()/30)+1;
+        }else{
+            return 1;
+        }
+    }
+
+    @Transactional
+    public static int getIndicesTableUsersGeral(){
+        List<Usuario> l = getListaDeUsuarios();
+        int total = l.size();
+        int resto = total%30;
+        float conta = ((float)l.size())/(float)30;
+        if(conta>1 && resto==0){
+            return ( l.size()/30);
+        }else if(conta>1 && resto!=0){
+            return ( l.size()/30)+1;
+        }else{
+            return 1;
+        }
+    }
+
+    @Transactional
+    public static void setStatusTask(Task t){
+        t.setStatus(1);
+        dao.merge(t);
+        dao.flush();
+    }
+
+    @Transactional
+    public static int getIndicesTableTasksGeral(){
+        List<Task> l = getListaDeTasks();
+        int total = l.size();
+        int resto = total%30;
+        float conta = ((float)l.size())/(float)30;
+        if(conta>1 && resto==0){
+            return ( l.size()/30);
+        }else if(conta>1 && resto!=0){
+            return ( l.size()/30)+1;
+        }else{
+            return 1;
+        }
+    }
+
+    @Transactional
+    public static int getIndicesListTarefas(Usuario u){
+        List<Task> l = getListaTaskPendentesDoUsuario(u);
+        int total = l.size();
+        int resto = total%5;
+        float conta = ((float)l.size())/(float)5;
+        if(conta>1 && resto==0){
+            return ( l.size()/5);
+        }else if(conta>1 && resto!=0){
+            return ( l.size()/5)+1;
+        }else{
+            return 1;
+        }
+    }
+
+    @Transactional
     public static float getPorcentagemBDFree(){
         List<Usuario> lu = getListaDeUsuarios();
         List<Task> lt = getListaDeTasks();
@@ -73,11 +140,12 @@ public class App {
     @Transactional
     public static boolean addTaskAUmUsuario(String titulo, String data, String hora, Usuario autor, int status){
         Task t = new Task(titulo,data,hora,autor,status);
-        if(!existeTask(t)){
+        if(t!=null){
             addTask(t);
             return true;
         }
         return false;
+
     }
     @Transactional
     private static void removeTask(Task t){
@@ -143,6 +211,24 @@ public class App {
         }
         return false;
     }
+
+    @Transactional
+    public static List<Task> getListaTaskPendentesGeral(){
+        List<Task> l = dao.findByAttributeName(Task.class.getName(),"status",String.valueOf(0));
+        return l;
+    }
+    @Transactional
+    public static List<Task> getListaTaskPendentesDoUsuario(Usuario u){
+        List<Task> lg = getListaTaskPendentesGeral();
+        List<Task> l = new ArrayList<>();
+        for(Task t: lg){
+            if(t.getIdAutor().equals(u.getId())){
+                l.add(t);
+            }
+        }
+        return l;
+    }
+
     @Transactional
     public static List<Task> getListaTaskFeitasGeral(){
         List<Task> l = dao.findByAttributeName(Task.class.getName(),"status",String.valueOf(1));

@@ -3,15 +3,29 @@
 # ~~~~
 
 # Home page
-GET         /                    controllers.Application.index
-GET         /signin              controllers.Application.renderRegister
-GET         /admin               controllers.Application.renderDashAdmin
-GET         /app                 controllers.Application.renderDashboardUsuario
-GET         /logout              controllers.Application.logout
+GET         /                              controllers.Application.index
+GET         /signin                        controllers.Application.renderRegister
+GET         /admin                         controllers.Application.renderDashAdmin
+GET         /app                           controllers.Application.renderDashboardUsuario
+GET         /logout                        controllers.Application.logout
+GET         /app/add                       controllers.Application.renderAddTarefa
+GET         /app/hist/:ind                 controllers.Application.renderHistoricoUsuario(ind: Integer)
+GET         /app/li/:in                    controllers.Application.renderListTarefasUsuario(in: Integer)
+GET         /app/remove/:id                controllers.Application.removeTarefa(id: Long)
+GET         /app/hist/remove/:id           controllers.Application.removeTask(id: Long)
+GET         /admin/users/:ind              controllers.Application.renderUsersAdmin(ind: Integer)
+GET         /admin/tasks/:ind              controllers.Application.renderTasksAdmin(ind: Integer)
+GET         /admin/users/remove/:id        controllers.Application.removeUsuarioAdmin(id: Long)
+GET         /admin/tasks/remove/:id        controllers.Application.removeTaskAdmin(id: Long)
 
-POST        /auth                controllers.Application.auth
-POST        /register            controllers.Application.addUsuario
+GET         /loginfb                       controllers.Application.logarComFacebook()
+GET         /loginfbresponse               controllers.Application.logarComFace(code: String)
+
+POST        /auth                          controllers.Application.auth
+POST        /register                      controllers.Application.addUsuario
+POST        /app/add/task                  controllers.Application.addItemTask
+POST        /app/salvar                    controllers.Application.salvar
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.at(path="/public/assets/", file)
+GET         /assets/*file                  controllers.Assets.at(path="/public/assets/", file)
     

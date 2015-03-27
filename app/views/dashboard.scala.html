@@ -1,218 +1,225 @@
 @(usuario: Usuario, tasks: List[Task])
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Atarefado | Dashboard</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.2 -->
-    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <!-- FontAwesome 4.3.0 -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css"/>
-    <!-- Ionicons 2.0.0 -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
-    <!-- Theme style -->
-    <link href="/assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Atarefado | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+            <!-- Bootstrap 3.3.2 -->
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+            <!-- FontAwesome 4.3.0 -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css"/>
+            <!-- Ionicons 2.0.0 -->
+        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+            <!-- Theme style -->
+        <link href="/assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+            <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link href="/assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css"/>
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-</head>
-<body class="skin-purple">
-<div class="wrapper">
+    </head>
+    <body class="skin-purple">
+        <div class="wrapper">
 
-<header class="main-header">
-    <!-- Logo -->
-    <a href="#" class="logo"><b>Atarefado</b></a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
-
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="@usuario.getFoto" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">@usuario.getNome</span>
+            <header class="main-header">
+                    <!-- Logo -->
+                <a href="#" class="logo"><b>Atarefado</b></a>
+                    <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                        <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                            <img src="@usuario.getFoto" class="img-circle" alt="User Image"/>
 
-                            <p>
-                                @usuario.getNome - Web Developer
-                            </p>
-                        </li>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                                <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="@usuario.getFoto" class="user-image" alt="User Image"/>
+                                    <span class="hidden-xs">@usuario.getNome</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                        <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="@usuario.getFoto" class="img-circle" alt="User Image"/>
 
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
-                            </div>
-                            <div class="pull-right">
-                                <a href="/logout" class="btn btn-default btn-flat">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="@usuario.getFoto" class="img-circle" alt="User Image"/>
-            </div>
-            <div class="pull-left info">
-                <p>@usuario.getNome</p>
+                                        <p>
+                                            @usuario.getNome - Web Developer
+                                        </p>
+                                    </li>
 
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
-            <li class="header">MENU</li>
-            <li class="active treeview">
-                <a href="/app">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                </a>
-            </li>
-            <li><a href="#"><i class="fa fa-table"></i> Histórico</a></li>
-        </ul>
-    </section>
-    <!-- /.sidebar -->
-</aside>
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Dashboard
-            <small>Control panel</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-        <!-- Small boxes (Stat box) -->
-
-        <!-- Main row -->
-        <div class="row">
-
-            <div class="col-md-2">
-
-            </div>
-
-            <div class="col-md-8">
-                <!-- TO DO List -->
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <i class="ion ion-clipboard"></i>
-
-                        <h3 class="box-title">Lista de Tarefas</h3>
-
-                        <div class="box-tools pull-right">
-                            <ul class="pagination pagination-sm inline">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <ul class="todo-list">
-                            <li>
-                                <!-- drag handle -->
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                <!-- checkbox -->
-                                <input type="checkbox" value="" name=""/>
-                                <!-- todo text -->
-                                <span class="text">Design a nice theme</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
+                                        <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                                <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="/logout" class="btn btn-default btn-flat">Logout</a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix no-border">
-                        <a href="#" class="btn btn-default pull-left"><i class="fa fa-plus"></i> Add Item</a>
-                        <button type="submit" class="btn btn-default pull-right"><i class="fa fa-save"></i> Salvar</button>
+                </nav>
+            </header>
+                <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                    <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                        <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="@usuario.getFoto" class="img-circle" alt="User Image"/>
+                        </div>
+                        <div class="pull-left info">
+                            <p>@usuario.getNome</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
                     </div>
-                </div>
 
+                        <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">MENU</li>
+                        <li class="active treeview">
+                            <a href="/app">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li><a href="/app/hist/1"><i class="fa fa-table"></i> Histórico</a></li>
+                    </ul>
+                </section>
+                    <!-- /.sidebar -->
+            </aside>
 
-                <!-- /.box -->
+                <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+            Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                    <!-- Main content -->
+                <section class="content">
+
+                        <!-- Small boxes (Stat box) -->
+
+                        <!-- Main row -->
+                    <div class="row">
+
+                        <div class="col-md-2">
+
             </div>
 
+                        <div class="col-md-8">
+                            <form action="/app/salvar" method="post">
+                                    <!-- TO DO List -->
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <i class="ion ion-clipboard"></i>
+
+                                        <h3 class="box-title">Lista de Tarefas</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <ul class="pagination pagination-sm inline">
+                                            @for(i <- 1 to App.getIndicesListTarefas(usuario)) {
+                                                <li><a href="/app/li/@i">@i</a></li>
+                                            }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                        <!-- /.box-header -->
+
+                                    <div class="box-body">
+                                        <ul class="todo-list">
+                                        @for(task <- tasks) {
+                                            <li>
+                                                    <!-- drag handle -->
+                                                <span class="handle">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </span>
+                                                    <!-- checkbox -->
+                                                <input type="checkbox" value="true" name="@task.getId"/>
+                                                    <!-- todo text -->
+                                                <span class="text">@task.getTitulo</span>
+                                                    <!-- Emphasis label -->
+                                                <small class="label label-primary"><i class="fa fa-clock-o"></i> @task.getHora</small>
+                                                <small class="label label-waring"><i class="fa fa-calendar-o">@task.getData</i> </small>
+                                                    <!-- General tools such as edit or delete-->
+                                                <div class="tools">
+                                                    <a href="/app/remove/@task.getId">
+                                                        <i class="fa fa-trash-o"></i></a>
+                                                </div>
+                                            </li>
+                                        }
+                                        </ul>
+                                    </div>
+
+                                        <!-- /.box-body -->
+                                    <div class="box-footer clearfix no-border">
+                                        <a href="/app/add" class="btn btn-default pull-left"><i class="fa fa-plus"></i>
+                                            Add Item</a>
+                                        <button type="submit" class="btn btn-default pull-right"><i class="fa fa-save"></i>
+                                            Salvar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                        <!-- /.row (main row) -->
+                </section>
+
+
+                    <!-- /.content -->
+            </div>
+                <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.0
+                </div>
+                <strong>Copyright &copy; 2015-2016 <a href="#">Freelancer Studio</a>.</strong> All rights reserved.
+            </footer>
         </div>
-        <!-- /.row (main row) -->
-    </section>
+            <!-- ./wrapper -->
+
+            <!-- jQuery 2.1.3 -->
+        <script src="/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+            <!-- jQuery UI 1.11.2 -->
+        <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+        $.widget.bridge ( 'uibutton', $.ui.button ) ;
+        </script>
+            <!-- Bootstrap 3.3.2 JS -->
+        <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2015-2016 <a href="#">Freelancer Studio</a>.</strong> All rights reserved.
-</footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery 2.1.3 -->
-<script src="/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-<!-- jQuery UI 1.11.2 -->
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.2 JS -->
-<script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- FastClick -->
+        <script src='/assets/plugins/fastclick/fastclick.min.js'></script>
+            <!-- AdminLTE App -->
+        <script src="/assets/dist/js/app.min.js" type="text/javascript"></script>
 
 
-<!-- FastClick -->
-<script src='/assets/plugins/fastclick/fastclick.min.js'></script>
-<!-- AdminLTE App -->
-<script src="/assets/dist/js/app.min.js" type="text/javascript"></script>
-
-
-<!-- AdminLTE for demo purposes -->
-<script src="/assets/dist/js/demo.js" type="text/javascript"></script>
-</body>
+            <!-- AdminLTE for demo purposes -->
+        <script src="/assets/dist/js/demo.js" type="text/javascript"></script>
+    </body>
 </html>

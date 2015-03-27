@@ -99,7 +99,7 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li><a href="#"><i class="fa fa-table"></i> Historico</a></li>
+            <li><a href="/app/hist/1"><i class="fa fa-table"></i> Historico</a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
@@ -127,7 +127,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>280</h3>
+                        <h3>@App.getTotalTaskDoUsuario(usuario)</h3>
 
                         <p>TAREFAS</p>
                     </div>
@@ -141,7 +141,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>80</h3>
+                        <h3>@App.getTotalDeTasksPendentesDoUsuario(usuario)</h3>
 
                         <p>PENDENTES</p>
                     </div>
@@ -155,7 +155,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>200</h3>
+                        <h3>@App.getTotaldeTasksFeitasDoUsuario(usuario)</h3>
 
                         <p>REALIZADAS</p>
                     </div>
@@ -169,8 +169,11 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>Basico</h3>
-
+                        @if(usuario.getPlan==0){
+                            <h3>Basico</h3>
+                        }else{
+                            <h3>Premium</h3>
+                        }
                         <p>PLANO</p>
                     </div>
                     <div class="icon">
@@ -197,7 +200,7 @@
                     <!-- /.box-header -->
 
                     <div class="box-body">
-                        <form action="/admin/addTema" method="post">
+                        <form action="/app/add/task" method="post">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Titulo:</label>
@@ -215,7 +218,7 @@
                                     <label>Hora Limite:</label>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control timepicker"/>
+                                        <input name="hora" type="text" class="form-control timepicker"/>
 
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
@@ -233,7 +236,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input id="datemask" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                                    <input name="data" id="datemask" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
                                 </div><!-- /.input group -->
                             </div><!-- /.form group -->
                             <!-- /.box-body -->

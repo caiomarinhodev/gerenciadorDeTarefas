@@ -101,10 +101,6 @@ public class Task {
 
         Task task = (Task) o;
 
-        if (status != task.status) return false;
-        if (data != null ? !data.equals(task.data) : task.data != null) return false;
-        if (hora != null ? !hora.equals(task.hora) : task.hora != null) return false;
-        if (!idAutor.equals(task.idAutor)) return false;
         if (titulo != null ? !titulo.equals(task.titulo) : task.titulo != null) return false;
 
         return true;
