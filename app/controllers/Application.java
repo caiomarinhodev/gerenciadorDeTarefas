@@ -325,15 +325,15 @@ public class Application extends Controller {
 
         Logger.info("CODE:" + code);
         Usuario ufb = loginFacebook.obterUsuarioFacebook(code);
-        Logger.info("EMAIL:"+ ufb.getEmail());
         Usuario us = App.getUsuarioPorEmail(ufb.getEmail());
         if(us==null){
-            App.addUsuarioNoBD(ufb.getEmail(),"12345", ufb.getNome(),ufb.getFoto(),0);
+            App.addUsuarioNoBD(ufb.getNome(),ufb.getEmail(), ufb.getSenha(),ufb.getFoto(),0);
             us = App.getUsuarioPorEmail(ufb.getEmail());
         }
         if (us!=null) {
             session().clear();
             session().put("email",us.getEmail());
+            Logger.info("EMAIL:"+ session().get("email"));
             return renderDashboardUsuario();
         } else {
             return index();
