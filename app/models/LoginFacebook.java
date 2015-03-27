@@ -50,7 +50,7 @@ public class LoginFacebook {
 
         String fo = resp.findPath("picture").textValue();
         String foto = "https://cdn3.iconfinder.com/data/icons/users/100/user_male_1-512.png";
-        System.out.println("PICTURE DO FACEBOOK:"+foto);
+        System.out.println("PICTURE DO FACEBOOK:"+fo);
         //Logger.info(foto);
         //Logger.info(resp.asText());
         Usuario usuarioFacebook = new Usuario(nome,email,"12345",foto,0);
