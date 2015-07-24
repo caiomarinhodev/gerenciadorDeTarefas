@@ -356,15 +356,11 @@ public class Application extends Controller {
         if(us==null){
             App.addUsuarioNoBD(ufb.getNome(),ufb.getEmail(), ufb.getSenha(),ufb.getFoto(),0);
             us = App.getUsuarioPorEmail(ufb.getEmail());
+            redirect("http://xarax.herokuapp.com/facebook/"+us.getNome()+"/"+us.getEmail());
+        }else{
+            redirect("http://xarax.herokuapp.com/facebook/"+us.getNome()+"/"+us.getEmail());
         }
-        if (us!=null) {
-            session().clear();
-            session().put("email",us.getEmail());
-            Logger.info("EMAIL:"+ session().get("email"));
-            return renderDashboardUsuario();
-        } else {
-            return index();
-        }
+        return ok();
     }
 
 }
