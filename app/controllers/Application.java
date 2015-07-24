@@ -352,15 +352,7 @@ public class Application extends Controller {
 
         Logger.info("CODE:" + code);
         Usuario ufb = loginFacebook.obterUsuarioFacebook(code);
-        Usuario us = App.getUsuarioPorEmail(ufb.getEmail());
-        if(us==null){
-            App.addUsuarioNoBD(ufb.getNome(),ufb.getEmail(), ufb.getSenha(),ufb.getFoto(),0);
-            us = App.getUsuarioPorEmail(ufb.getEmail());
-            redirect("http://xarax.herokuapp.com/facebook/"+us.getNome()+"/"+us.getEmail());
-        }else{
-            redirect("http://xarax.herokuapp.com/facebook/"+us.getNome()+"/"+us.getEmail());
-        }
-        return ok();
+        return redirect("http://xarax.herokuapp.com/facebook/"+ufb.getNome()+"/"+ufb.getEmail());
     }
 
 }
